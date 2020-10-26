@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Sou um component vue JS</h1>
+        Listagem de categorias
     </div>
 </template>
 
@@ -10,6 +10,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
     
 </style>

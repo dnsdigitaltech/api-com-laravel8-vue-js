@@ -10,5 +10,8 @@ export default{
     },
     getters: {
         
+    },
+    mounted() {
+        console.log('Component mounted.')
     }
 }

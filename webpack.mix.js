@@ -19,12 +19,12 @@ mix.js('resources/js/app.js', 'public/js')
         //
     ]);
 
-mix.browserSync({
+/*mix.browserSync({
     proxy: 'http://localhost:8000/#/',
     notify: false,
     open: false,
     port: 3001
- })
+ })*/
 
 // Full API
 // mix.js(src, output);

@@ -8,7 +8,8 @@ import store from './vuex/store'
 /**
  * Components globais
  */
-Vue.component('test-component', require('./components/TestComponent.vue').default)
+
+ Vue.component('app-component', require('./components/App.vue').default)
 
 const app = new Vue({
     router,
