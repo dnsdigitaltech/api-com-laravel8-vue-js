@@ -1,11 +1,49 @@
 <template>
     <div>
-        Listagem de categorias
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOME</th>
+                    <th width="100">ACÇÕES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(category, index) in categories.data" :key="index">
+                    <td>{{ category.id }}</td>
+                    <td>{{ category.name }}</td>
+                    <td>...</td>
+                </tr>  
+            </tbody>
+        </table>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
+    created() {
+        this.loadCategories()
+    },
+    data() {
+        return{
+            categories: {
+                data: []
+            },
+        }
+    },
+    methods: {
+        loadCategories(){
+            axios.get('http://localhost:8000/api/v1/categories')
+            .then(response => {
+                console.log(response)
+                this.categories = response;
+            })
+            .catch(errors => {
+                console.log(errors)
+            })
+        }
+    },
     
 }
 </script>
