@@ -9,7 +9,7 @@ import store from './vuex/store'
  * Components globais
  */
 
- Vue.component('app-component', require('./components/App.vue').default)
+ Vue.component('admin-component', require('./components/admin/AdminComponent').default)
 
 const app = new Vue({
     router,
