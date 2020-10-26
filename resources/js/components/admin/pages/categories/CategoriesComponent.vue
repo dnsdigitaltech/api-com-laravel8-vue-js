@@ -1,6 +1,7 @@
 <template>
     <div>
-        <table>
+        <h1>Listagem das Categorias</h1>
+        <table class="table">
             <thead>
                 <tr>
                     <th>ID</th>
