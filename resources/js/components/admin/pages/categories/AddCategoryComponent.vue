@@ -1,9 +1,9 @@
 <template>
     <div>
         <h1>Adicionar nova categoria</h1>
-        <form class="form">
+        <form class="form" @submit.prevent="submitForm">
             <div class="form-group">
-                <input type="text" name="" id="" class="form-control" placeholder="Nome da Categoria">
+                <input type="text" v-model="name" id="" class="form-control" placeholder="Nome da Categoria">
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Enviar</button>
@@ -14,7 +14,18 @@
 
 <script>
 export default {
-    
+    data() {
+        return {
+            name: ''
+        }
+    },
+    methods: {
+        submitForm() {
+            this.$store.dispatch('storeCategory', {name: this.name})
+                                .then(() => this.$router.push({name:'admin.categories'}))
+                                .catch()
+        }
+    }
 }
 </script>
 

@@ -1958,7 +1958,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data() {
+    return {
+      name: ''
+    };
+  },
+
+  methods: {
+    submitForm() {
+      this.$store.dispatch('storeCategory', {
+        name: this.name
+      }).then(() => this.$router.push({
+        name: 'admin.categories'
+      })).catch();
+    }
+
+  }
+});
 
 /***/ }),
 
@@ -6516,7 +6533,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -37965,37 +37982,61 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("h1", [_vm._v("Adicionar nova categoria")]),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        staticClass: "form",
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.submitForm($event)
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.name,
+                expression: "name"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", id: "", placeholder: "Nome da Categoria" },
+            domProps: { value: _vm.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.name = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("h1", [_vm._v("Adicionar nova categoria")]),
-      _vm._v(" "),
-      _c("form", { staticClass: "form" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              name: "",
-              id: "",
-              placeholder: "Nome da Categoria"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c(
-            "button",
-            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-            [_vm._v("Enviar")]
-          )
-        ])
-      ])
+    return _c("div", { staticClass: "form-group" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Enviar")]
+      )
     ])
   }
 ]
@@ -55287,6 +55328,18 @@ __webpack_require__.r(__webpack_exports__);
         console.log(errors);
       })["finally"](function () {
         return context.commit('PRELOADER', false);
+      });
+    },
+    storeCategory: function storeCategory(context, params) {
+      context.commit('PRELOADER', true);
+      return new Promise(function (resolve, reject) {
+        axios.post('http://localhost:8000/api/v1/categories', params).then(function (response) {
+          return resolve();
+        })["catch"](function (error) {
+          return reject(error);
+        })["finally"](function () {
+          return context.commit('PRELOADER', false);
+        });
       });
     }
   },
