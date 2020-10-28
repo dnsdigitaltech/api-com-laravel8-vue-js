@@ -12,7 +12,7 @@ Route::get('me', [AuthApiController::class, 'getAuthenticatedUser']);
 
 Route::group([
     'prefix' => 'v1',  
-    //'middleware' => 'auth:api'
+    'middleware' => 'auth:api'
 ], function(){
     Route::get('categories/{id}/products', [CategoryController::class, 'products']);
     Route::apiResource('categories', CategoryController::class);
