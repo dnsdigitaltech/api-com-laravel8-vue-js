@@ -2089,6 +2089,7 @@ __webpack_require__.r(__webpack_exports__);
       type: Object | Array,
       default: () => {
         return {
+          id: '',
           name: ''
         };
       }
@@ -6673,7 +6674,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../../node_mod
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -55704,7 +55705,18 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    editCategory: function editCategory() {}
+    updateCategory: function updateCategory(context, params) {
+      context.commit('PRELOADER', true);
+      return new Promise(function (resolve, reject) {
+        axios.put("http://localhost:8000/api/v1/categories/".concat(params.id), params).then(function (response) {
+          return resolve(response.data);
+        })["catch"](function (error) {
+          return reject(error);
+        })["finally"](function () {
+          return context.commit('PRELOADER', false);
+        });
+      });
+    }
   },
   getters: {},
   mounted: function mounted() {
