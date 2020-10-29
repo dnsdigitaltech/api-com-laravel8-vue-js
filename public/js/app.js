@@ -1944,6 +1944,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _partials_FormCategoryComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./partials/FormCategoryComponent */ "./resources/js/components/admin/pages/categories/partials/FormCategoryComponent.vue");
 //
 //
 //
@@ -1951,29 +1952,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data() {
-    return {
-      name: ''
-    };
-  },
-
-  methods: {
-    submitForm() {
-      this.$store.dispatch('storeCategory', {
-        name: this.name
-      }).then(() => this.$router.push({
-        name: 'admin.categories'
-      })).catch();
-    }
-
+  components: {
+    formCat: _partials_FormCategoryComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
 
@@ -2038,7 +2020,55 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _partials_FormCategoryComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./partials/FormCategoryComponent */ "./resources/js/components/admin/pages/categories/partials/FormCategoryComponent.vue");
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    id: {
+      require: true
+    }
+  },
+
+  created() {
+    this.$store.dispatch('loadCategory', this.id).then(response => this.category = response).catch(error => {
+      console.log(error);
+    });
+  },
+
+  components: {
+    formCat: _partials_FormCategoryComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+
+  data() {
+    return {
+      category: {}
+    };
+  } //DevReb!@
+
+
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/js/components/admin/pages/categories/partials/FormCategoryComponent.vue":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/js/components/admin/pages/categories/partials/FormCategoryComponent.vue ***!
+  \*****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -2054,25 +2084,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    id: {
-      require: true
+    category: {
+      require: false,
+      type: Object | Array,
+      default: () => {
+        return {
+          name: ''
+        };
+      }
+    },
+    updating: {
+      require: false,
+      type: Boolean,
+      default: false
     }
   },
+  methods: {
+    onSubmit() {
+      const action = this.updating ? 'updateCategory' : 'storeCategory';
+      this.$store.dispatch(action, this.category).then(() => this.$router.push({
+        name: 'admin.categories'
+      })).catch();
+    }
 
-  created() {
-    this.$store.dispatch('loadCategory', this.id).then(response => this.category = response).catch(error => {
-      console.log(error);
-    });
-  },
-
-  data() {
-    return {
-      category: {
-        name: ''
-      }
-    };
   }
-
 });
 
 /***/ }),
@@ -6581,7 +6616,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -6619,7 +6654,26 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/js/components/admin/pages/categories/partials/FormCategoryComponent.vue":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/style-compiler?{"optionsId":"0","vue":true,"scoped":false,"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/js/components/admin/pages/categories/partials/FormCategoryComponent.vue ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -37975,6 +38029,83 @@ function normalizeComponent (
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-144c5eaa\",\"hasScoped\":false,\"optionsId\":\"0\",\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/js/components/admin/pages/categories/partials/FormCategoryComponent.vue":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-144c5eaa","hasScoped":false,"optionsId":"0","buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/js/components/admin/pages/categories/partials/FormCategoryComponent.vue ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "form",
+      {
+        staticClass: "form",
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.onSubmit($event)
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.category.name,
+                expression: "category.name"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", id: "", placeholder: "Nome da Categoria" },
+            domProps: { value: _vm.category.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.category, "name", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Enviar")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+if (false) {}
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-2073db19\",\"hasScoped\":true,\"optionsId\":\"0\",\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/js/components/admin/AdminComponent.vue":
 /*!**************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-2073db19","hasScoped":true,"optionsId":"0","buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/js/components/admin/AdminComponent.vue ***!
@@ -38049,64 +38180,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h1", [_vm._v("Editar Categoria")]),
-    _vm._v(" "),
-    _c(
-      "form",
-      {
-        staticClass: "form",
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.submitForm($event)
-          }
-        }
-      },
-      [
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.category.name,
-                expression: "category.name"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text", id: "", placeholder: "Nome da Categoria" },
-            domProps: { value: _vm.category.name },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.category, "name", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _vm._m(0)
-      ]
-    )
-  ])
+  return _c(
+    "div",
+    [
+      _c("h1", [_vm._v("Editar Categoria")]),
+      _vm._v(" "),
+      _c("form-cat", { attrs: { category: _vm.category, updating: true } })
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Enviar")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 if (false) {}
@@ -38128,64 +38212,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h1", [_vm._v("Adicionar nova categoria")]),
-    _vm._v(" "),
-    _c(
-      "form",
-      {
-        staticClass: "form",
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.submitForm($event)
-          }
-        }
-      },
-      [
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.name,
-                expression: "name"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text", id: "", placeholder: "Nome da Categoria" },
-            domProps: { value: _vm.name },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.name = $event.target.value
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _vm._m(0)
-      ]
-    )
-  ])
+  return _c(
+    "div",
+    [
+      _c("h1", [_vm._v("Adicionar nova categoria")]),
+      _vm._v(" "),
+      _c("form-cat")
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Enviar")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 if (false) {}
@@ -41523,6 +41560,27 @@ if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
 var add = __webpack_require__(/*! ../../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ "./node_modules/vue-style-loader/lib/addStylesClient.js").default
 var update = add("3c3d2f12", content, false, {});
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/js/components/admin/pages/categories/partials/FormCategoryComponent.vue":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/style-compiler?{"optionsId":"0","vue":true,"scoped":false,"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/js/components/admin/pages/categories/partials/FormCategoryComponent.vue ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(/*! !../../../../../../../node_modules/css-loader!../../../../../../../node_modules/vue-loader/lib/style-compiler?{"optionsId":"0","vue":true,"scoped":false,"sourceMap":false}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./FormCategoryComponent.vue */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/js/components/admin/pages/categories/partials/FormCategoryComponent.vue");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(/*! ../../../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ "./node_modules/vue-style-loader/lib/addStylesClient.js").default
+var update = add("0b79a780", content, false, {});
 // Hot Module Replacement
 if(false) {}
 
@@ -55383,6 +55441,56 @@ var Component = Object(_node_modules_vue_loader_lib_runtime_component_normalizer
   __vue_module_identifier__
 )
 Component.options.__file = "resources/js/components/admin/pages/categories/EditCategoryComponent.vue"
+
+/* hot reload */
+if (false) {}
+
+/* harmony default export */ __webpack_exports__["default"] = (Component.exports);
+
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/pages/categories/partials/FormCategoryComponent.vue":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/admin/pages/categories/partials/FormCategoryComponent.vue ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_FormCategoryComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !babel-loader!../../../../../../../node_modules/vue-loader/lib/selector?type=script&index=0!./FormCategoryComponent.vue */ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/js/components/admin/pages/categories/partials/FormCategoryComponent.vue");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_template_compiler_index_id_data_v_144c5eaa_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_FormCategoryComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../../../../node_modules/vue-loader/lib/template-compiler/index?{"id":"data-v-144c5eaa","hasScoped":false,"optionsId":"0","buble":{"transforms":{}}}!../../../../../../../node_modules/vue-loader/lib/selector?type=template&index=0!./FormCategoryComponent.vue */ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-144c5eaa\",\"hasScoped\":false,\"optionsId\":\"0\",\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/js/components/admin/pages/categories/partials/FormCategoryComponent.vue");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_component_normalizer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../../node_modules/vue-loader/lib/runtime/component-normalizer */ "./node_modules/vue-loader/lib/runtime/component-normalizer.js");
+var disposed = false
+function injectStyle (context) {
+  if (disposed) return
+  __webpack_require__(/*! !vue-style-loader!css-loader!../../../../../../../node_modules/vue-loader/lib/style-compiler/index?{"optionsId":"0","vue":true,"scoped":false,"sourceMap":false}!../../../../../../../node_modules/vue-loader/lib/selector?type=styles&index=0!./FormCategoryComponent.vue */ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/js/components/admin/pages/categories/partials/FormCategoryComponent.vue")
+}
+/* script */
+
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+
+var Component = Object(_node_modules_vue_loader_lib_runtime_component_normalizer__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_FormCategoryComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+  _node_modules_vue_loader_lib_template_compiler_index_id_data_v_144c5eaa_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_FormCategoryComponent_vue__WEBPACK_IMPORTED_MODULE_1__["render"],
+  _node_modules_vue_loader_lib_template_compiler_index_id_data_v_144c5eaa_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_FormCategoryComponent_vue__WEBPACK_IMPORTED_MODULE_1__["staticRenderFns"],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/admin/pages/categories/partials/FormCategoryComponent.vue"
 
 /* hot reload */
 if (false) {}

@@ -1,38 +1,37 @@
 <template>
     <div>
         <h1>Editar Categoria</h1>
-        <form class="form" @submit.prevent="submitForm">
-            <div class="form-group">
-                <input type="text" v-model="category.name" id="" class="form-control" placeholder="Nome da Categoria">
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </div>
-        </form>
+       <form-cat 
+            :category = "category"
+            :updating = "true"
+            ></form-cat>
     </div>
 </template>
 
 <script>
+import FormCategoryComponent from './partials/FormCategoryComponent'
 export default {
     props: {
         id: {
             require: true
         }
     },
-    created() {
+    created() {       
         this.$store.dispatch('loadCategory', this.id)
                         .then(response => this.category = response)
                         .catch(error => {
                             console.log(error)
                         })
     },
+    components: {
+        formCat: FormCategoryComponent
+    },
     data() {
         return {
-            category: {
-                name: ''
-            }
+            category:{}
         }
     }
+    //DevReb!@
 }
 </script>
 
