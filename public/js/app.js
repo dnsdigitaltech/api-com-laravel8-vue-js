@@ -2082,6 +2082,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     category: {
@@ -2100,12 +2101,22 @@ __webpack_require__.r(__webpack_exports__);
       default: false
     }
   },
+
+  data() {
+    return {
+      errors: {}
+    };
+  },
+
   methods: {
     onSubmit() {
       const action = this.updating ? 'updateCategory' : 'storeCategory';
       this.$store.dispatch(action, this.category).then(() => this.$router.push({
         name: 'admin.categories'
-      })).catch();
+      })).catch(error => {
+        console.log(error.response.data.errors);
+        this.errors = error.response.data.errors;
+      });
     }
 
   }
@@ -6674,7 +6685,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../../node_mod
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.has-error{ color: red;\n}\n.has-error input{border: 1px solid red\n}\n", ""]);
 
 // exports
 
@@ -38058,7 +38069,11 @@ var render = function() {
         }
       },
       [
-        _c("div", { staticClass: "form-group" }, [
+        _c("div", { class: ["form-group", { "has-error": _vm.errors.name }] }, [
+          _vm.errors.name
+            ? _c("div", [_vm._v(_vm._s(_vm.errors.name[0]))])
+            : _vm._e(),
+          _vm._v(" "),
           _c("input", {
             directives: [
               {
