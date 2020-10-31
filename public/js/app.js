@@ -2040,11 +2040,20 @@ __webpack_require__.r(__webpack_exports__);
   },
 
   created() {
-    this.$store.dispatch('loadCategory', this.id).then(response => this.category = response).catch(error => {
-      console.log(error);
-    });
+    this.loadCategory();
   },
 
+  methods: {
+    loadCategory() {
+      this.$store.dispatch('loadCategory', this.id).then(response => this.category = response).catch(error => {
+        this.$snotify.error('Categoria não encontrada');
+        this.$router.push({
+          name: 'admin.categories'
+        });
+      });
+    }
+
+  },
   components: {
     formCat: _partials_FormCategoryComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -2053,8 +2062,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       category: {}
     };
-  } //DevReb!@
-
+  }
 
 });
 
@@ -2117,8 +2125,8 @@ __webpack_require__.r(__webpack_exports__);
           name: 'admin.categories'
         });
       }).catch(error => {
-        this.$snotify.error('Algo Errado!', 'Erro'); // console.log(error.response.data.errors)
-
+        this.$snotify.error('Algo Errado!', 'Erro');
+        console.log(error.response.data.errors);
         this.errors = error.response.data.errors;
       });
     }
@@ -6670,7 +6678,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 

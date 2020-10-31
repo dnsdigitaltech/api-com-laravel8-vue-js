@@ -17,11 +17,17 @@ export default {
         }
     },
     created() {       
-        this.$store.dispatch('loadCategory', this.id)
+        this.loadCategory()
+    },
+    methods: {
+        loadCategory () {
+            this.$store.dispatch('loadCategory', this.id)
                         .then(response => this.category = response)
                         .catch(error => {
-                            console.log(error)
+                            this.$snotify.error('Categoria não encontrada')
+                            this.$router.push({name:'admin.categories'})
                         })
+        }
     },
     components: {
         formCat: FormCategoryComponent
@@ -30,8 +36,7 @@ export default {
         return {
             category:{}
         }
-    }
-    //DevReb!@
+    }    
 }
 </script>
 
