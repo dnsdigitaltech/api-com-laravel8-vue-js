@@ -2011,10 +2011,28 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   methods: {
+    /////////////ler categorias ao criar e deletar 
     loadCategories() {
       this.$store.dispatch('loadCategories');
     },
 
+    /////////////confirmar ao deletar
+    confirmDestroy(category) {
+      this.$snotify.error(`Deseja relamente deletar a categoria: ${category.name}`, 'Deletar?', {
+        timout: 10000,
+        ShowProgressBar: true,
+        closeOnClick: true,
+        buttons: [{
+          text: 'Não',
+          action: () => console.log('Não deletou...')
+        }, {
+          text: 'Sim',
+          action: () => this.destroy(category)
+        }]
+      });
+    },
+
+    ////////////deleta as categorias
     destroy(category) {
       this.$store.dispatch('distroyCategory', category.id).then(() => {
         this.$snotify.success(`Sucesso ao deletar a categoria: ${category.name}`);
@@ -6678,7 +6696,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -38403,7 +38421,7 @@ var render = function() {
                       on: {
                         click: function($event) {
                           $event.preventDefault()
-                          return _vm.destroy(category)
+                          return _vm.confirmDestroy(category)
                         }
                       }
                     },

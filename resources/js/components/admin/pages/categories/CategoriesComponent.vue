@@ -16,7 +16,7 @@
                     <td>{{ category.name }}</td>
                     <td>
                         <router-link :to="{name: 'admin.categories.edit', params: {id: category.id}}" class="btn btn-info">Editar</router-link>
-                        <a href="#" class="btn btn-danger" @click.prevent="destroy(category)">Remover</a>
+                        <a href="#" class="btn btn-danger" @click.prevent="confirmDestroy(category)">Remover</a>
                     </td>
                 </tr>  
             </tbody>
@@ -36,9 +36,23 @@ export default {
         }
     },
     methods: {
+        /////////////ler categorias ao criar e deletar 
         loadCategories () {
              this.$store.dispatch('loadCategories')
         },
+        /////////////confirmar ao deletar
+        confirmDestroy (category) {
+            this.$snotify.error(`Deseja relamente deletar a categoria: ${category.name}`, 'Deletar?', {
+                timout: 10000,
+                ShowProgressBar: true,
+                closeOnClick:true,
+                buttons: [
+                    {text: 'Não', action: () => console.log('Não deletou...')},
+                    {text: 'Sim', action: () => this.destroy(category)}
+                ]
+            })
+        },
+        ////////////deleta as categorias
         destroy(category) {
             this.$store.dispatch('distroyCategory', category.id)
                             .then(() => {
