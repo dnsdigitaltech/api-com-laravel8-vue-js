@@ -37,7 +37,7 @@ export default{
 
             return new Promise((resolve, reject) => {
                 axios.post('http://localhost:8000/api/v1/categories', params)
-                    .then(response => resolve(response.data))
+                    .then(response => resolve())
                     .catch(error => reject(error))
                     .finally(() => context.commit('PRELOADER', false))
             })
@@ -47,7 +47,7 @@ export default{
 
             return new Promise((resolve, reject) => {
                 axios.put(`http://localhost:8000/api/v1/categories/${params.id}`, params)
-                    .then(response => resolve(response.data))
+                    .then(response => resolve())
                     .catch(error => reject(error))
                     .finally(() => context.commit('PRELOADER', false))
             })

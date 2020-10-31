@@ -2111,10 +2111,14 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     onSubmit() {
       const action = this.updating ? 'updateCategory' : 'storeCategory';
-      this.$store.dispatch(action, this.category).then(() => this.$router.push({
-        name: 'admin.categories'
-      })).catch(error => {
-        console.log(error.response.data.errors);
+      this.$store.dispatch(action, this.category).then(() => {
+        this.$snotify.success('Sucesso ao cadastrar');
+        this.$router.push({
+          name: 'admin.categories'
+        });
+      }).catch(error => {
+        this.$snotify.error('Algo Errado!', 'Erro'); // console.log(error.response.data.errors)
+
         this.errors = error.response.data.errors;
       });
     }
@@ -57159,7 +57163,7 @@ __webpack_require__.r(__webpack_exports__);
       context.commit('PRELOADER', true);
       return new Promise(function (resolve, reject) {
         axios.post('http://localhost:8000/api/v1/categories', params).then(function (response) {
-          return resolve(response.data);
+          return resolve();
         })["catch"](function (error) {
           return reject(error);
         })["finally"](function () {
@@ -57171,7 +57175,7 @@ __webpack_require__.r(__webpack_exports__);
       context.commit('PRELOADER', true);
       return new Promise(function (resolve, reject) {
         axios.put("http://localhost:8000/api/v1/categories/".concat(params.id), params).then(function (response) {
-          return resolve(response.data);
+          return resolve();
         })["catch"](function (error) {
           return reject(error);
         })["finally"](function () {
