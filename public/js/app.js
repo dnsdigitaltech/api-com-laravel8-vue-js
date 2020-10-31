@@ -1995,15 +1995,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   created() {
-    this.$store.dispatch('loadCategories');
+    this.loadCategories();
   },
 
   computed: {
     categories() {
       return this.$store.state.categories.items;
+    }
+
+  },
+  methods: {
+    loadCategories() {
+      this.$store.dispatch('loadCategories');
+    },
+
+    destroy(category) {
+      this.$store.dispatch('distroyCategory', category.id).then(() => {
+        this.$snotify.success(`Sucesso ao deletar a categoria: ${category.name}`);
+        this.loadCategories();
+      }).catch(error => {
+        console.log(error);
+        this.$snotify.error('Erro ao deletar a categoria', 'Falha');
+      });
     }
 
   }
@@ -6659,7 +6678,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -38374,6 +38393,21 @@ var render = function() {
                       }
                     },
                     [_vm._v("Editar")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-danger",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.destroy(category)
+                        }
+                      }
+                    },
+                    [_vm._v("Remover")]
                   )
                 ],
                 1
@@ -38398,7 +38432,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("NOME")]),
         _vm._v(" "),
-        _c("th", { attrs: { width: "100" } }, [_vm._v("ACÇÕES")])
+        _c("th", { attrs: { width: "200" } }, [_vm._v("ACÇÕES")])
       ])
     ])
   }
@@ -57189,6 +57223,16 @@ __webpack_require__.r(__webpack_exports__);
         })["finally"](function () {
           return context.commit('PRELOADER', false);
         });
+      });
+    },
+    distroyCategory: function distroyCategory(context, id) {
+      context.commit('PRELOADER', true);
+      return new Promise(function (resolve, reject) {
+        axios["delete"]("http://localhost:8000/api/v1/categories/".concat(id)).then(function (response) {
+          return resolve();
+        })["catch"](function (error) {
+          return reject(error);
+        }); //.finally(() => context.commit('PRELOADER', false))
       });
     }
   },

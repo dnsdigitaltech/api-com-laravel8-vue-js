@@ -44,12 +44,20 @@ export default{
         },
         updateCategory(context, params) {
             context.commit('PRELOADER', true)
-
             return new Promise((resolve, reject) => {
                 axios.put(`http://localhost:8000/api/v1/categories/${params.id}`, params)
                     .then(response => resolve())
                     .catch(error => reject(error))
                     .finally(() => context.commit('PRELOADER', false))
+            })
+        },
+        distroyCategory (context, id) {
+            context.commit('PRELOADER', true)
+            return new Promise((resolve, reject) => {
+                axios.delete(`http://localhost:8000/api/v1/categories/${id}`)
+                    .then(response => resolve())
+                    .catch(error => reject(error))
+                    //.finally(() => context.commit('PRELOADER', false))
             })
         }
     },
